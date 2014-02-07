@@ -48,8 +48,8 @@ check :: Condition c v -> v -> Maybe (Checked c v)
 check c v = if test c v then Just (Checked v) else Nothing
 
 -- claim c for v
-claim :: c -> v -> Checked c v
-claim _ = Checked
+claim :: Condition c v -> v -> Checked c v
+claim c v = if test c v then Checked v else error "Falsifiable claim!"
 
 pcond :: Condition c v -> v -> (Checked c v -> v2) -> Maybe v2
 pcond cond v f = f <$> check cond v

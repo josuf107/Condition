@@ -34,7 +34,7 @@ validated :: Condition Validated String
 validated = condition ((>4) . length)
 
 validate :: String -> Checked Validated String
-validate s = claim Validated (s ++ "     ")
+validate s = claim validated (s ++ "     ")
 
 isEven :: Integral n => Condition Even n
 isEven = condition even
@@ -55,10 +55,10 @@ halfOrThree :: Integral n => Checked (U Even Three) n -> n
 halfOrThree n = if uncheck n == 3 then 3 else uncheck n `div` 2
 
 timesEven :: Integral n => n -> Checked Even n -> Checked Even n
-timesEven a b = claim Even $ a * uncheck b
+timesEven a b = claim isEven $ a * uncheck b
 
 double :: Integral n => n -> Checked Even n
-double n = claim Even (2 * n)
+double n = claim isEven (2 * n)
 
 divide :: Fractional n => n -> Checked Nonzero n -> n
 divide x y = x / uncheck y
