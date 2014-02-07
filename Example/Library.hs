@@ -1,6 +1,7 @@
 module Example.Library
     ( Even
     , isEven
+    , Three
     , three
     , Nonzero
     , isNonzero
