@@ -31,11 +31,8 @@ data Three = Three
 three :: (Num n, Eq n) => Condition Three n
 three = condition (==3)
 
-validated :: Condition Validated String
-validated = condition ((>4) . length)
-
 validate :: String -> Checked Validated String
-validate s = claim Validated (s ++ "     ")
+validate s = claim Validated ("Valid: " ++ s)
 
 isEven :: Integral n => Condition Even n
 isEven = condition even

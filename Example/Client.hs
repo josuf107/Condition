@@ -5,11 +5,11 @@ import Control.Applicative
 import Example.Library
 import Condition
 
-client :: Char
-client = danger $ validate "eel"
+client :: String
+client = stripValid $ validate "eel"
 
-danger :: Checked Validated String -> Char
-danger s = head . drop 4 . uncheck $ s
+stripValid :: Checked Validated String -> String
+stripValid = drop 7 . uncheck
 
 t1 :: Maybe Integer
 t1 = halfOrThree <$> (check (isEven |> three) 3)
